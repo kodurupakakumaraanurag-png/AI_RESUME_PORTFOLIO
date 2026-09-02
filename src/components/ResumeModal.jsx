@@ -1,7 +1,12 @@
 import React from 'react';
-import { Printer, Download, X, Phone, Mail, ExternalLink } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './Icons';
+import { Printer, Download, X } from 'lucide-react';
 import { candidate, experience, projects } from '../data/portfolioData';
+
+// Utility to strip any unicode emojis or sticker symbols
+const stripEmojis = (str) => {
+  if (typeof str !== 'string') return str;
+  return str.replace(/[\u{1F300}-\u{1F9FF}\u{2600}-\u{27BF}\u{2300}-\u{23FF}\u{2B50}\u{1F1E0}-\u{1F1FF}\u{FE00}-\u{FE0F}\u{1F000}-\u{1F02F}\u{1F0A0}-\u{1F0FF}]/gu, '').trim();
+};
 
 export const ResumeModal = ({ isOpen, onClose, onShowToast }) => {
   if (!isOpen) return null;
@@ -11,7 +16,7 @@ export const ResumeModal = ({ isOpen, onClose, onShowToast }) => {
   };
 
   const handleDownload = () => {
-    onShowToast?.(`📄 Downloading ${candidate.name.replace(/\s+/g, '_')}_Resume.pdf`);
+    onShowToast?.(`Downloading ${candidate.name.replace(/\s+/g, '_')}_Resume.pdf`);
     window.print();
   };
 
@@ -48,30 +53,21 @@ export const ResumeModal = ({ isOpen, onClose, onShowToast }) => {
             <div className="resume-contact-bar justify-center">
               <span>{candidate.location}</span>
               <span className="divider">|</span>
-              <span>
-                <Phone size={12} style={{ display: 'inline', marginRight: '3px' }} />
-                {candidate.phone}
-              </span>
+              <span>{candidate.phone}</span>
               <span className="divider">|</span>
-              <span>
-                <Mail size={12} style={{ display: 'inline', marginRight: '3px' }} />
-                {candidate.email}
-              </span>
+              <span>{candidate.email}</span>
             </div>
 
             <div className="resume-links-bar justify-center">
               <a href={candidate.linkedin} target="_blank" rel="noopener noreferrer">
-                <LinkedinIcon size={12} />
                 <span>LinkedIn</span>
               </a>
               <span className="divider">|</span>
               <a href={candidate.github} target="_blank" rel="noopener noreferrer">
-                <GithubIcon size={12} />
                 <span>GitHub</span>
               </a>
               <span className="divider">|</span>
               <a href="#hero" onClick={onClose}>
-                <ExternalLink size={12} />
                 <span>Portfolio</span>
               </a>
             </div>
@@ -80,7 +76,7 @@ export const ResumeModal = ({ isOpen, onClose, onShowToast }) => {
           {/* Professional Summary */}
           <div className="resume-section">
             <h3 className="resume-section-title">PROFESSIONAL SUMMARY</h3>
-            <p className="resume-text">{candidate.bio}</p>
+            <p className="resume-text">{stripEmojis(candidate.bio)}</p>
           </div>
 
           {/* Technical Skills */}
@@ -123,7 +119,7 @@ export const ResumeModal = ({ isOpen, onClose, onShowToast }) => {
                 </div>
                 <ul className="resume-bullets">
                   {exp.achievements.map((ach, idx) => (
-                    <li key={idx}>{ach}</li>
+                    <li key={idx}>{stripEmojis(ach)}</li>
                   ))}
                 </ul>
               </div>
@@ -136,12 +132,12 @@ export const ResumeModal = ({ isOpen, onClose, onShowToast }) => {
             {projects.map((proj) => (
               <div key={proj.id} className="resume-exp-item">
                 <div className="exp-item-header">
-                  <strong>{proj.title}</strong>
+                  <strong>{stripEmojis(proj.title)}</strong>
                   <span> | <em>{proj.tags.slice(0, 4).join(', ')}</em></span>
                 </div>
                 <ul className="resume-bullets">
-                  <li>{proj.fullDescription}</li>
-                  <li>{proj.metrics.join(' • ')}</li>
+                  <li>{stripEmojis(proj.fullDescription)}</li>
+                  <li>{proj.metrics.map(stripEmojis).join(' • ')}</li>
                 </ul>
               </div>
             ))}

@@ -45,7 +45,7 @@ export const ContactSection = ({ onShowToast }) => {
       });
 
       if (res.ok) {
-        onShowToast?.('🎉 Thank you! Your message has been sent to my inbox.');
+        onShowToast?.('Thank you! Your message has been sent to my inbox.');
         setFormData({
           name: '',
           email: '',

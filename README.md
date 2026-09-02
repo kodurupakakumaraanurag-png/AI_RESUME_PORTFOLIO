@@ -8,7 +8,7 @@ A high-performance, glassmorphic technical portfolio built for **Kodurupaka Kuma
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
 - **Live macOS JSON Terminal (`anurag_profile.json`)**: Interactive candidate profile with syntax highlighting, telemetry tags, and 1-click clipboard copy.
 - **Interactive AI & Machine Learning Sandbox**: Real simulated endpoints (`/api/v1/rag-retrieval`, `/api/v1/model-inference`, `/api/v1/data-pipeline`, `/api/v1/candidate-match`) with realistic latency and dynamic JSON inspectors.
@@ -20,7 +20,7 @@ A high-performance, glassmorphic technical portfolio built for **Kodurupaka Kuma
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: React 19 + Vite
 - **Icons**: Lucide React + Custom SVGs
@@ -29,7 +29,7 @@ A high-performance, glassmorphic technical portfolio built for **Kodurupaka Kuma
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -61,6 +61,6 @@ A high-performance, glassmorphic technical portfolio built for **Kodurupaka Kuma
 
 ---
 
-## 📄 License
+## License
 
 MIT License. Designed and engineered for Kodurupaka Kumara Anurag.

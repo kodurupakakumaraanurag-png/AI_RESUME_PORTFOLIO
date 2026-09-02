@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, ArrowRight, Mail, Sparkles, Terminal, Copy, Check } from 'lucide-react';
+import { MapPin, ArrowRight, Mail, FileText, Terminal, Copy, Check } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { candidate } from '../data/portfolioData';
 
@@ -97,7 +97,7 @@ export const Hero = ({ onOpenContact, onOpenResume, onShowToast }) => {
             </button>
 
             <button onClick={onOpenResume} className="btn btn-secondary">
-              <Sparkles size={18} className="text-amber" />
+              <FileText size={18} />
               <span>View Resume</span>
             </button>
           </div>
@@ -190,7 +190,7 @@ export const Hero = ({ onOpenContact, onOpenResume, onShowToast }) => {
                 <span className="pulse-dot" />
                 <span>AI Pipeline Engine: <strong>ACTIVE</strong></span>
               </div>
-              <span className="latency-tag">⚡ AI/ML Engineer</span>
+              <span className="latency-tag">AI/ML Engineer</span>
             </div>
           </div>
         </div>
